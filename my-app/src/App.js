@@ -1,6 +1,6 @@
-import { RealDate } from './realDate';
+import { RealDate } from './components/realDate';
 import './App.scss';
-import { TodoList } from './todoList'
+import { TodoList } from './components/todoList'
 
 function App() {
   return (
