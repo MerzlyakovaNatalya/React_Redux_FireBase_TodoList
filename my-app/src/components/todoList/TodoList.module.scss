@@ -1,0 +1,65 @@
+$label: 5px 10px 15px 10px;
+
+$boxShadow: 0 1px 4px rgba(0, 0, 0, 1),
+-23px 0 20px -23px rgba(0, 0, 0, .8),
+23px 0 20px -23px rgba(0, 0, 0, .8),
+0 0 40px rgba(0, 0, 0, .1) inset;
+
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
+  .wrap_form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    input {
+        width: 50%;
+        margin: 0 auto;
+        margin-bottom: 10px;
+        margin-top: 20px;
+    }
+    textarea {
+        margin: 0 auto;
+        width: 50%;
+        min-height: 60px;
+    }
+  }
+  .wrap_todo {
+    margin: 0 auto;
+    width: 50%;
+    display: flex;
+    margin-top: 40px;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    .todo {
+        width: 50%;
+        box-shadow: $boxShadow;
+    }
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        label {
+          padding: 10px;
+          margin: 10px;
+          box-shadow: $boxShadow;
+          margin-right: 0;
+        }
+        .label_data {
+            padding: 0;
+            box-shadow: none;
+            margin: 0;
+            margin-left: 5px;
+        }
+        input {
+          border: 0;  
+        }
+        span {
+          color: rgb(35, 14, 219);
+          font-weight: 600;
+        }
+        button {
+            border: 0
+        };
+      }
+  }
+}
