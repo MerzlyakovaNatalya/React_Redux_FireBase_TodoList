@@ -1,6 +1,7 @@
 import React from "react";
-import { useState } from "react";
 import style from "./TodoList.module.scss";
+import { useState } from "react";
+import { TodoItem } from '../todoItem';
 const dayjs = require("dayjs");
 let localizedFormat = require("dayjs/plugin/localizedFormat");
 
@@ -30,30 +31,14 @@ export const TodoList = () => {
           name="text"
           placeholder="Описание задачи"
         ></textarea>
-        <label>
-          <input type="file" />
-        </label>
+        <label htmlFor="file-loader-button" className={style.label_file}>Выбрать файл</label>
+        <input type="file" id="file-loader-button" className={style.label_button}/>
+        <button className={style.buttons} >Отправить</button>
       </form>
-      <div className={style.wrap_todo}>
-      <div className={style.todo}>tttttt</div>
-        <div className={style.wrapper}>
-          <label className={style.label_data}>
-            Дата завершения задачи <span>{getDateFormat()}</span>
-          </label>
-          <label>
-            <input type="date" onChange={handleOnChange} />
-          </label>
-          <label>
-            <input type="checkbox" />&#32;Отметить, как выполнено
-          </label>
-          <label>
-            <button>Редактировать</button>
-          </label>
-          <label>
-            <button>Удалить</button>
-          </label>
-        </div>
-      </div>
+      <TodoItem
+      handleOnChange={handleOnChange}
+      getDateFormat={getDateFormat}
+      />
     </div>
   );
 };
