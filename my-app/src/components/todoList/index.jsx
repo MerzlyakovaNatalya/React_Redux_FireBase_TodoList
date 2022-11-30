@@ -10,6 +10,7 @@ export const TodoList = () => {
   const [valueTitle, setValueTitle] = useState("");
   const [valueContent, setValueContent] = useState("");
   const [valueFile, setValueFile] = useState();
+  const [fileUrl, setFileUrl] = useState();
 
   const handleOnChangeData = (event) => {
     event.preventDefault();
@@ -40,13 +41,17 @@ export const TodoList = () => {
     event.preventDefault();
     const file = event.target.files[0]
     setValueFile(file);
-  }
+      console.log(file)
+    }
+    
   const onSend = () => {
 
   }
 
   const resetForm = () => {
-
+    setValueTitle("");
+    setValueContent("");
+    setValueFile("");
   }
 
   return (
@@ -57,11 +62,14 @@ export const TodoList = () => {
         <input 
           type="text" 
           placeholder="Задача" 
-          onChange={onChangeTitle}/>
+          onChange={onChangeTitle}
+          value={valueTitle}
+          />
         <textarea
           name="text"
           placeholder="Описание задачи"
           onChange={onChangeContent}
+          value={valueContent}
         ></textarea>
         <label htmlFor="file-loader-button" className={style.label_file}>{valueFile?valueFile.name:"Выбрать файл"}</label>
         <input 
