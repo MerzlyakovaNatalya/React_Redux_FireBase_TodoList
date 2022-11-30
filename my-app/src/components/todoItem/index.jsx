@@ -1,7 +1,7 @@
 import React from 'react'
 import style from "./TodoItem.module.scss"
 
-export const TodoItem = ({handleOnChange, getDateFormat}) => {
+export const TodoItem = ({handleOnChangeData, getDateFormat}) => {
   return (
     <div className={style.wrap_todo}>
       <div className={style.todo}></div>
@@ -10,7 +10,7 @@ export const TodoItem = ({handleOnChange, getDateFormat}) => {
           Дата завершения задачи <span>{getDateFormat()}</span>
         </label>
         <label>
-          <input type="date" onChange={handleOnChange} />
+          <input type="date" onChange={handleOnChangeData} />
         </label>
         <label>
           <input type="checkbox" />&#32;Отметить, как выполнено
