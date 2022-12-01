@@ -1,7 +1,8 @@
 import {  ADD_TODO, ADD_TODOS, CHANGE_TODO, DELETE_TODO } from './actions'
+import { firstTodo } from "../../components/modele";
 
 const initialState = {
-    todos: []
+    todos: [firstTodo]
 }
 
 export const todosReducer = (state = initialState, action) => {
