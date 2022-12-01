@@ -16,6 +16,13 @@ $boxShadow: 0 1px 4px rgba(0, 0, 0, 1),
         width: 65%;
         box-shadow: $boxShadow;
     }
+    h3 {
+      color: #3f285a;
+  }
+    .content {
+      margin-left: 10px;
+      text-align: left;
+    }
     .wrapper {
         display: flex;
         flex-direction: column;
@@ -41,6 +48,6 @@ $boxShadow: 0 1px 4px rgba(0, 0, 0, 1),
         }
         button {
             border: 0
-        };
+        }
       }
   }

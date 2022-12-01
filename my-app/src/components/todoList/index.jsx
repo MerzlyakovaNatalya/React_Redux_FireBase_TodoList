@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import style from "./TodoList.module.scss";
 import { useState } from "react";
-import { TodoItem } from '../todoItem';
+import { TodoItem } from "../todoItem";
+import { useDispatch } from "react-redux";
+import { addTodo } from "../../store/todos/actions";
+import { createTodoEntity } from "../modele";
 const dayjs = require("dayjs");
 let localizedFormat = require("dayjs/plugin/localizedFormat");
 
@@ -10,7 +13,7 @@ export const TodoList = () => {
   const [valueTitle, setValueTitle] = useState("");
   const [valueContent, setValueContent] = useState("");
   const [valueFile, setValueFile] = useState();
-  const [fileUrl, setFileUrl] = useState();
+  const dispatch = useDispatch();
 
   const handleOnChangeData = (event) => {
     event.preventDefault();
@@ -44,8 +47,10 @@ export const TodoList = () => {
       console.log(file)
     }
     
-  const onSend = () => {
-
+  const onSend = (event) => {
+    event.preventDefault();
+    dispatch(addTodo(createTodoEntity(Date.now(), valueTitle, valueContent)))
+    resetForm();
   }
 
   const resetForm = () => {
@@ -56,9 +61,7 @@ export const TodoList = () => {
 
   return (
     <div className={style.wrap}>
-      <form className={style.wrap_form} onSubmit={() => {
-        onSend()
-        resetForm()}}>
+      <form className={style.wrap_form} onSubmit={onSend}>
         <input 
           type="text" 
           placeholder="Задача" 
