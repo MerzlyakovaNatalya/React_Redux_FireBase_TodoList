@@ -3,7 +3,7 @@ import style from "./TodoList.module.scss";
 import { useState } from "react";
 import { TodoItem } from "../todoItem";
 import { useDispatch } from "react-redux";
-import { addTodo } from "../../store/todos/actions";
+import { addTodo, pushTodoToFb, onTrackingAddedTodos } from "../../store/todos/actions";
 import { createTodoEntity } from "../modele";
 const dayjs = require("dayjs");
 let localizedFormat = require("dayjs/plugin/localizedFormat");
@@ -49,7 +49,7 @@ export const TodoList = () => {
     
   const onSend = (event) => {
     event.preventDefault();
-    dispatch(addTodo(createTodoEntity(Date.now(), valueTitle, valueContent)))
+    dispatch(pushTodoToFb(createTodoEntity(Date.now(), valueTitle, valueContent)))
     resetForm();
   }
 
@@ -58,6 +58,10 @@ export const TodoList = () => {
     setValueContent("");
     setValueFile("");
   }
+
+  useEffect(() => {
+    dispatch(onTrackingAddedTodos)
+  }, []);
 
   return (
     <div className={style.wrap}>
