@@ -1,29 +1,33 @@
 import React from 'react'
 import style from'./TodoItem.module.scss'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { getTodos } from '../../store/todos/selectors'
-import { changeTodo } from '../../store/todos/actions'
+import { Form } from "../form";
 
-export const TodoItem = ({handleOnChangeData, getDateFormat}) => {
+export const TodoItem = ({
+  handleOnChangeData, 
+  getDateFormat, 
+  removeTodo,
+  onChangeCheckbox,
+  handleOnChangeRedaction}) => {
 
   const todo = useSelector(getTodos);
-  const dispatch = useDispatch();
-
-  const onChangeCheckbox = (todoId, isDone) => {
-    dispatch(changeTodo(todoId, {
-      isDone
-    }))
-  }
   
   return (
     <div>
         {todo.map((item) => (
           <div className={style.wrap_todo} key={item.id}>
           <div className={style.todo}>
-           <div>
-             <h3>{item.title}</h3>
-             <p className={style.content}>{item.content}</p>
-           </div>
+            {
+              item.redaction ? (
+                 <Form />
+              ) : (
+                <div>
+                <h3>{item.title}</h3>
+                <p className={style.content}>{item.content}</p>
+              </div>
+              )
+            }
           </div>
           <div className={style.wrapper}>
         <label className={style.label_data}>
@@ -41,10 +45,15 @@ export const TodoItem = ({handleOnChangeData, getDateFormat}) => {
               />&#32;Отметить, как выполнено
         </label>
         <label>
-          <button>Редактировать</button>
+          <input 
+          type="checkbox" 
+          checked={item.redaction}
+          onChange={() => handleOnChangeRedaction(item.id, !item.redaction)}/>Редактировать
         </label>
         <label>
-          <button className={style.button}>Удалить</button>
+          <button 
+          className={style.button}
+          onClick={() => removeTodo(item.id)}>Удалить</button>
         </label>
       </div>
           </div>)
