@@ -45,7 +45,7 @@ export const todosReducer = (state = initialState, action) => {
         case DELETE_TODO: {
             const prevTodos = state.todos;
 
-            const targetIndex = prevTodos.findIndex((item) => item.id === action.payload.todoId)
+            const targetIndex = prevTodos.findIndex((item) => item.id === action.payload)
 
             if(targetIndex === -1) {
                 return state;

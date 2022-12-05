@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
-import style from "./TodoList.module.scss";
-import { useForm } from "../../hooks/useForm";
-import { Form } from "../form";
+//import { Form } from "../form";
 import { useState } from "react";
-import { TodoItem } from "../todoItem";
+//import { TodoItem } from "../todoItem";
 import { useDispatch } from "react-redux";
 import { pushTodoToFb,
   onTrackingAddedTodos, 
@@ -15,17 +13,14 @@ import { pushTodoToFb,
   onTrackingChangedTodos,
   offTrackingChangedTodos,
   changeTodo
- } from "../../store/todos/actions";
-import { createTodoEntity } from "../modele";
+ } from "../store/todos/actions";
+import { createTodoEntity } from "../components/modele";
 const dayjs = require("dayjs");
 let localizedFormat = require("dayjs/plugin/localizedFormat");
 
+export const useForm = () => {
 
-export const TodoList = () => {
-
-  const [todos, dispatch] = useForm();
-
-  const [data, setData] = useState("");
+    const [data, setData] = useState("");
   const [valueTitle, setValueTitle] = useState("");
   const [valueContent, setValueContent] = useState("");
   const [valueFile, setValueFile] = useState();
@@ -101,33 +96,20 @@ export const TodoList = () => {
      dispatch(onTrackingAddedTodos);
      dispatch(onTrackingRemovedTodos);
      dispatch(onTrackingChangedTodos);
+    }, []);
 
-     return () => {
-      dispatch(offTrackingAddedTodos);
-      dispatch(offTrackingRemovedTodos);
-      dispatch(offTrackingChangedTodos);
-     }
-   }, []);
-
-  return (
-    <div className={style.wrap}>
-      <Form
-      onSend={onSend}
-      onChangeTitle={onChangeTitle}
-      valueTitle={valueTitle}
-      onChangeContent={onChangeContent}
-      valueContent={valueContent}
-      valueFile={valueFile}
-      onChangeFile={onChangeFile}
-      />
-      <TodoItem
-      handleOnChangeData={handleOnChangeData}
-      getDateFormat={getDateFormat}
-      removeTodo={removeTodo}
-      onChangeCheckbox={onChangeCheckbox}
-      handleOnChangeRedaction={handleOnChangeRedaction}
-      />
-    </div>
-  );
-};
-
+    return [
+        valueTitle,
+        valueContent,
+        valueFile,
+        onSend,
+      onChangeTitle,
+      onChangeContent,
+      onChangeFile,
+      handleOnChangeData,
+      getDateFormat,
+      removeTodo,
+      onChangeCheckbox,
+      handleOnChangeRedaction,
+    ]
+}
