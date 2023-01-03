@@ -20,7 +20,7 @@ let localizedFormat = require("dayjs/plugin/localizedFormat");
 
 export const useForm = () => {
 
-    const [data, setData] = useState("");
+  const [data, setData] = useState("");
   const [valueTitle, setValueTitle] = useState("");
   const [valueContent, setValueContent] = useState("");
   const [valueFile, setValueFile] = useState();
