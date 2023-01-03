@@ -1,54 +1,67 @@
 $label: 5px 10px 15px 10px;
 
-$boxShadow: 0 1px 4px rgba(0, 0, 0, 1),
--23px 0 20px -23px rgba(0, 0, 0, .8),
-23px 0 20px -23px rgba(0, 0, 0, .8),
-0 0 40px rgba(0, 0, 0, .1) inset;
+$boxShadow: 0 1px 4px rgba(0, 0, 0, 1), -23px 0 20px -23px rgba(0, 0, 0, 0.8),
+  23px 0 20px -23px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 
-.wrap_todo {
+.wrap_todos {
+  background-color: #f7f6f4;
+  .wrap_todo {
     margin: 0 auto;
     width: 50%;
     display: flex;
     margin-top: 40px;
     justify-content: space-between;
     margin-bottom: 30px;
-    .todo {
-        width: 65%;
-        box-shadow: $boxShadow;
-    }
-    h3 {
-      color: #3f285a;
-  }
-    .content {
-      margin-left: 10px;
-      text-align: left;
+     .todo {
+       width: 65%;
+       box-shadow: $boxShadow;
     }
     .wrapper {
-        display: flex;
-        flex-direction: column;
-        label {
-          padding: 4px;
-          margin: 5px;
-          box-shadow: $boxShadow;
-          margin-right: 0;
-          font-size: 14px;
+      display: flex;
+      flex-direction: column;
+      label {
+        padding: 4px;
+        margin: 5px;
+        box-shadow: $boxShadow;
+        margin-right: 0;
+        font-size: 14px;
+        .checkbox_data {
+          background-color: #777674;
+          margin-right: 5px;
         }
-        .label_data {
-            padding: 0;
-            box-shadow: none;
-            margin: 0;
-            margin-left: 5px;
+        .checkbox_data:hover {
+          transform: scale(1.5);
         }
-        input {
-          border: 0;  
-        }
-        span {
-          color: rgb(35, 14, 219);
-          font-weight: 600;
-          font-size: 18px;
-        }
-        button {
-            border: 0
+        .button {
+          background-color: transparent;
         }
       }
+      .label_data {
+        padding: 0;
+        box-shadow: none;
+        margin: 0;
+        margin-left: 5px;
+      }
+      input {
+        border: 0;
+        background-color: transparent;
+      }
+      span {
+        color: rgb(35, 14, 219);
+        font-weight: 600;
+        font-size: 18px;
+      }
+      button {
+        border: 0;
+      }
+      .input_redaction {
+        width: 10px;
+        outline: none;
+      }
+    }
+    .todo_redaction {
+      @extend.todo;
+      background: #e6e3df;
+    }
   }
+}
